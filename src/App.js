@@ -37,19 +37,15 @@ function App() {
     };
     return (
         <div className="App">
-            <button className="goToBlizzard" type="button" onClick={goToBlizzard}>
-                go to blizzard
-            </button>
-            <button className="login" type="button" onClick={loginBz}>
-                login
-            </button>
-
             <a href="https://kr.battle.net/oauth/authorize?:region=kr&response_type=code&client_id=cd5f2cc20f0e4be08e31ae9938e56b2d&redirect_uri=http://localhost:3000/oauth&scope=wow.profile">
                 블리자드계정연동
             </a>
-
+            <div>
+                <a href="http://localhost:3000">HOME</a>
+            </div>
             <Route path="/oauth" component={Oauth} />
         </div>
+
     );
 }
 
