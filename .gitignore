@@ -5,3 +5,4 @@ node_modules
 /.idea/omr-client.iml
 /.idea/inspectionProfiles/Project_Default.xml
 /.idea/vcs.xml
+build
