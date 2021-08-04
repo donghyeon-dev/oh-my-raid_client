@@ -7,7 +7,7 @@ const Oauth = () => {
     const history = useHistory();
 
     const headers = {
-        'Authorization' : 'eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJvaG15cmFpZCIsImlhdCI6MTYyNzYyNzMzNiwiTG9naW5JZCI6ImRvbmdoeWVvbmRldkBnbWFpbC5jb20iLCJVc2VyTmFtZSI6ImF1dG9jYXQiLCJleHAiOjE2Mjc2MzA5MzZ9.3-Hwc1kst_LcG_AKAnugyCb4Z087pTDyRVedc6uOYt6fgPv6euR-jxr7dScLgwJ9eEgHXgawEOgVN_8mkC4hcw'
+        'Authorization' : localStorage.getItem("token")
     };
     useEffect(() => {
         const search = getParameter(location.search);
@@ -15,7 +15,10 @@ const Oauth = () => {
             .get('http://localhost:8880/login/oauth?code=' + search)
             .then(response =>
                 axios.post('http://localhost:8880/login/oauth/storeAccessToken',{accessToken : response.data.data}, {headers})
-                    .then(res => history.push("/"))
+                    .then(res =>{
+                        alert("블리자드 계정연동을 위한 토큰 발급에 성공했습니다.");
+                        history.push("/");
+                    })
                     .catch(err => alert(err))
             )
             .catch(error => alert(error));
