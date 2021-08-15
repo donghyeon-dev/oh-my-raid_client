@@ -17,6 +17,6 @@
 - 
 
 ##ToDo
-1. API 테스트
-2. 구조 잡기
-3. Docker에 로컬배포하여 사용
+1. Axios instance 및 config 설정
+2. Router 구현
+3. Docker에 로컬 배포하여 사용
