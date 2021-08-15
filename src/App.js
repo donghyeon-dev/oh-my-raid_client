@@ -8,7 +8,7 @@ import { Route, Link } from 'react-router-dom';
 function App() {
     const [res, setRes] = useState(null);
     const headers = {
-        'Authorization' : localStorage.getItem("token")
+        'Authorization' : sessionStorage.getItem("token")
     };
 
     const goToBlizzard = async () => {
@@ -27,7 +27,7 @@ function App() {
         const response = axios.post(
             'http://localhost:8880/login',data,{headers}
         ).then(res => {
-            localStorage.setItem("token",res.data.data.accessToken);
+            sessionStorage.setItem("token",res.data.data.accessToken);
             console.log(res.data.data.accessToken);
         });
 
