@@ -7,7 +7,7 @@ const Oauth = () => {
     const history = useHistory();
 
     const headers = {
-        'Authorization' : localStorage.getItem("token")
+        'Authorization' : sessionStorage.getItem("token")
     };
     useEffect(() => {
         const search = getParameter(location.search);
