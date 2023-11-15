@@ -3,13 +3,12 @@ import './App.css';
 import React, { useState } from 'react';
 import axios from 'axios';
 import Oauth from './Oauth';
-import SignIn from "./SignIn";
 import { Route, Link } from 'react-router-dom';
 
 function App() {
     const [res, setRes] = useState(null);
     const headers = {
-        Authorization: sessionStorage.getItem('token'),
+        'Authorization' : sessionStorage.getItem("token")
     };
 
     const goToBlizzard = async () => {
@@ -25,34 +24,10 @@ function App() {
             email: 'donghyeondev@gmail.com',
             password: 'qkrgus0712!',
         };
-        const response = axios.post('http://localhost:8880/login', data, { headers }).then((res) => {
-            sessionStorage.setItem('token', res.data.data.accessToken);
-            console.log(res.data.data.accessToken);
-        });
-
-        console.log(response);
-    };
-
-    const login2 = () => {
-        const data = {
-            email: 'dlrmsgy307@naver.com',
-            password: 'qwe123123',
-        };
-        const response = axios.post('http://localhost:8880/login', data, { headers }).then((res) => {
-            sessionStorage.setItem('token', res.data.data.accessToken);
-            console.log(res.data.data.accessToken);
-        });
-
-        console.log(response);
-    };
-
-    const login3 = () => {
-        const data = {
-            email: 'gh5670@naver.com',
-            password: 'qwe123',
-        };
-        const response = axios.post('http://localhost:8880/login', data, { headers }).then((res) => {
-            sessionStorage.setItem('token', res.data.data.accessToken);
+        const response = axios.post(
+            'http://localhost:8880/login',data,{headers}
+        ).then(res => {
+            sessionStorage.setItem("token",res.data.data.accessToken);
             console.log(res.data.data.accessToken);
         });
 
@@ -69,15 +44,7 @@ function App() {
     return (
         <div className="App">
             <div>
-                <button type="button" onClick={login}>
-                    로그인
-                </button>
-                <button type="button" onClick={login2}>
-                    근효아이디로그인
-                </button>
-                <button type="button" onClick={login3}>
-                    근찬아이디로그인
-                </button>
+                <button type="button" onClick={login} >로그인</button>
             </div>
 
             <a href="https://kr.battle.net/oauth/authorize?:region=kr&response_type=code&client_id=cd5f2cc20f0e4be08e31ae9938e56b2d&redirect_uri=http://localhost:3000/oauth&scope=wow.profile">
@@ -86,11 +53,10 @@ function App() {
             <div>
                 <a href="http://localhost:3000">HOME</a>
             </div>
-            
-            <Route path="/signin" component={SignIn} />
+
             <Route path="/oauth" component={Oauth} />
-            
         </div>
+
     );
 }
 
